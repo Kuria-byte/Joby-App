@@ -1,27 +1,23 @@
 import React from 'react';
 import './JobCard.css';
+import { Job } from '../../services/api';
 
 interface JobCardProps {
-  title: string;
-  company: string;
-  location: string;
-  description: string;
-  salary?: string;
-  imageUrl?: string;
-  postedDate?: string;
-  jobType?: string;
+  job: Job;
 }
 
-const JobCard: React.FC<JobCardProps> = ({
-  title,
-  company,
-  location,
-  description,
-  salary = 'Salary not specified',
-  imageUrl,
-  postedDate,
-  jobType
-}) => {
+const JobCard: React.FC<JobCardProps> = ({ job }) => {
+  const {
+    title,
+    company,
+    location,
+    description,
+    salary = 'Salary not specified',
+    imageUrl,
+    postedDate,
+    jobType
+  } = job;
+
   const defaultImage = '/icons/company-default.svg';
 
   return (

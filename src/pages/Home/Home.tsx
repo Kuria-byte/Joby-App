@@ -1,42 +1,47 @@
 import React, { useEffect, useState } from 'react';
 import SwipeDeck from '../../components/SwipeDeck/SwipeDeck';
 import { api, Job } from '../../services/api';
+import { jobAPI } from '../../services/jobAPI';
 import './Home.css';
+
+const MOCK_USER_ID = 'user123'; // Replace this with actual user ID from your auth system
 
 const Home: React.FC = () => {
   const [jobs, setJobs] = useState<Job[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const fetchJobs = async () => {
-      try {
-        const fetchedJobs = await api.getJobs();
-        setJobs(fetchedJobs);
-        setLoading(false);
-      } catch (err) {
-        setError('Failed to load jobs. Please try again later.');
-        setLoading(false);
-      }
-    };
-
-    fetchJobs();
-  }, []);
-
-  const handleSwipeLeft = async (jobId: string) => {
+  const fetchJobs = async () => {
     try {
-      await api.passJob(jobId);
+      const fetchedJobs = await api.getJobs();
+      setJobs(fetchedJobs);
+      setLoading(false);
     } catch (err) {
-      console.error('Failed to pass job:', err);
+      setError('Failed to load jobs. Please try again later.');
+      setLoading(false);
     }
   };
 
-  const handleSwipeRight = async (jobId: string) => {
+  useEffect(() => {
+    fetchJobs();
+  }, []);
+
+  const handleStackEmpty = async () => {
+    setLoading(true);
     try {
-      await api.likeJob(jobId);
+      // Get more job recommendations
+      const newJobs = await jobAPI.getJobRecommendations(MOCK_USER_ID);
+      setJobs(newJobs);
     } catch (err) {
-      console.error('Failed to like job:', err);
+      setError('Failed to load more jobs. Please try again later.');
+    } finally {
+      setLoading(false);
     }
+  };
+
+  const handleError = (error: Error) => {
+    console.error('SwipeDeck error:', error);
+    setError('An error occurred. Please try again.');
   };
 
   if (loading) {
@@ -51,8 +56,9 @@ const Home: React.FC = () => {
     <div className="home">
       <SwipeDeck
         jobs={jobs}
-        onSwipeLeft={handleSwipeLeft}
-        onSwipeRight={handleSwipeRight}
+        userId={MOCK_USER_ID}
+        onStackEmpty={handleStackEmpty}
+        onError={handleError}
       />
     </div>
   );
