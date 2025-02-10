@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import io, { Socket } from 'socket.io-client';
+import { io, Socket } from 'socket.io-client';
 import './Chat.css';
 import { Match } from '../../services/matchingService';
 
@@ -21,7 +21,7 @@ const Chat: React.FC<ChatProps> = ({ match, userId, onClose }) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [newMessage, setNewMessage] = useState('');
   const [isConnected, setIsConnected] = useState(false);
-  const socketRef = useRef<Socket>();
+  const socketRef = useRef<ReturnType<typeof io>>();
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
