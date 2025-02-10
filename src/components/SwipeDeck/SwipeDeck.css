@@ -1,0 +1,43 @@
+.swipe-deck {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 20px;
+}
+
+.card-container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.action-buttons button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.action-buttons button:first-child {
+  background-color: #ff4b4b;
+  color: white;
+}
+
+.action-buttons button:last-child {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.action-buttons button:hover {
+  transform: scale(1.1);
+}

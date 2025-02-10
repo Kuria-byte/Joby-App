@@ -1,0 +1,30 @@
+.job-card {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  max-width: 400px;
+}
+
+.job-card h2 {
+  margin: 0 0 10px 0;
+  color: #333;
+}
+
+.job-card h3 {
+  margin: 0 0 5px 0;
+  color: #666;
+}
+
+.job-card .location {
+  color: #888;
+  font-size: 0.9em;
+  margin: 0 0 10px 0;
+}
+
+.job-card .description {
+  color: #444;
+  line-height: 1.5;
+  margin: 0;
+}
