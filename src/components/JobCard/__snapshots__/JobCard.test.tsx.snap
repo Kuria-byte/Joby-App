@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`JobCard matches snapshot 1`] = `
+<div
+  class="job-card"
+>
+  <div
+    class="job-card-header"
+  >
+    <div
+      class="company-image"
+    >
+      <img
+        alt="Tech Corp logo"
+        src="https://example.com/logo.png"
+      />
+    </div>
+    <div
+      class="company-info"
+    >
+      <h3
+        class="company-name"
+      >
+        Tech Corp
+      </h3>
+      <div
+        class="job-meta"
+      >
+        <span
+          class="location"
+        >
+          <i
+            class="fas fa-map-marker-alt"
+          />
+           
+          San Francisco, CA
+        </span>
+        <span
+          class="job-type"
+        >
+          <i
+            class="fas fa-briefcase"
+          />
+           
+          Full-time
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    class="job-card-body"
+  >
+    <h2
+      class="job-title"
+    >
+      Software Engineer
+    </h2>
+    <div
+      class="salary-badge"
+    >
+      <i
+        class="fas fa-money-bill-wave"
+      />
+       
+      $120,000 - $150,000
+    </div>
+    <p
+      class="job-description"
+    >
+      Exciting role for a software engineer
+    </p>
+  </div>
+  <div
+    class="job-card-footer"
+  >
+    <span
+      class="posted-date"
+    >
+      <i
+        class="far fa-clock"
+      />
+       Posted 
+      2025-02-11
+    </span>
+    <div
+      class="action-buttons"
+    >
+      <button
+        class="btn-more-info"
+      >
+        <i
+          class="fas fa-info-circle"
+        />
+        More Info
+      </button>
+      <button
+        class="btn-apply"
+      >
+        <i
+          class="fas fa-paper-plane"
+        />
+        Apply Now
+      </button>
+    </div>
+  </div>
+</div>
+`;

@@ -1,8 +1,10 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { useSwipeable, SwipeEventData } from 'react-swipeable';
+import { motion, AnimatePresence } from 'framer-motion';
 import JobCard from '../JobCard/JobCard';
 import { Job } from '../../services/api';
 import { jobAPI } from '../../services/jobAPI';
+import { logError, showErrorToast } from '../../utils/errorUtils';
 import './SwipeDeck.css';
 
 interface SwipeDeckProps {
@@ -19,12 +21,14 @@ const SwipeDeck: React.FC<SwipeDeckProps> = ({ jobs, userId, onStackEmpty, onErr
   const [currentIndex, setCurrentIndex] = useState(0);
   const [swipeDistance, setSwipeDistance] = useState(0);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [exitX, setExitX] = useState(0);
 
   const handleSwipeAction = useCallback(async (direction: 'left' | 'right') => {
     if (isProcessing) return;
 
     const currentJob = jobs[currentIndex];
     setIsProcessing(true);
+    setExitX(direction === 'right' ? 1000 : -1000);
 
     try {
       if (direction === 'right') {
@@ -41,11 +45,16 @@ const SwipeDeck: React.FC<SwipeDeckProps> = ({ jobs, userId, onStackEmpty, onErr
         return newIndex;
       });
     } catch (error) {
-      console.error(`Error processing ${direction} swipe:`, error);
+      logError(error as Error, 'SwipeDeck', userId, {
+        jobId: currentJob.id,
+        action: direction
+      });
+      showErrorToast(error as Error);
       onError?.(error as Error);
     } finally {
       setIsProcessing(false);
       setSwipeDistance(0);
+      setExitX(0);
     }
   }, [currentIndex, jobs, userId, isProcessing, onStackEmpty, onError]);
 
@@ -55,53 +64,61 @@ const SwipeDeck: React.FC<SwipeDeckProps> = ({ jobs, userId, onStackEmpty, onErr
         setSwipeDistance(eventData.deltaX);
       }
     },
-    onSwiped: (eventData: SwipeEventData) => {
-      if (!isProcessing && Math.abs(eventData.deltaX) >= SWIPE_THRESHOLD) {
-        handleSwipeAction(eventData.deltaX > 0 ? 'right' : 'left');
+    onSwipedLeft: () => {
+      if (Math.abs(swipeDistance) > SWIPE_THRESHOLD) {
+        handleSwipeAction('left');
       } else {
         setSwipeDistance(0);
       }
     },
-    preventScrollOnSwipe: true,
+    onSwipedRight: () => {
+      if (Math.abs(swipeDistance) > SWIPE_THRESHOLD) {
+        handleSwipeAction('right');
+      } else {
+        setSwipeDistance(0);
+      }
+    },
     trackMouse: true,
-    trackTouch: true,
+    preventDefaultTouchmoveEvent: true,
   });
 
-  // Calculate rotation and opacity based on swipe distance
-  const rotation = (swipeDistance / window.innerWidth) * ROTATION_ANGLE;
-  const opacity = Math.max(1 - Math.abs(swipeDistance) / (window.innerWidth / 2), 0);
+  if (currentIndex >= jobs.length) {
+    return <div className="swipe-deck-empty">No more jobs to show</div>;
+  }
 
-  const getCardStyle = (index: number): React.CSSProperties => {
-    if (index === currentIndex) {
-      return {
-        transform: `translateX(${swipeDistance}px) rotate(${rotation}deg)`,
-        opacity: opacity,
-        zIndex: jobs.length - index,
-        position: 'absolute',
-      };
-    }
-    return {
-      transform: 'scale(0.95)',
-      opacity: Math.max(1 - (index - currentIndex) * 0.2, 0),
-      zIndex: jobs.length - index,
-      position: 'absolute',
-    };
-  };
+  const currentJob = jobs[currentIndex];
+  const rotation = (swipeDistance / SWIPE_THRESHOLD) * ROTATION_ANGLE;
+  const opacity = Math.max(0, 1 - Math.abs(swipeDistance) / (SWIPE_THRESHOLD * 2));
 
   return (
     <div className="swipe-deck-container" {...handlers}>
-      {jobs.slice(currentIndex, currentIndex + 3).map((job, index) => (
-        <div
-          key={job.id}
+      <AnimatePresence>
+        <motion.div
+          key={currentJob.id}
           className="card-container"
-          style={getCardStyle(currentIndex + index)}
+          initial={{ x: 0, opacity: 1 }}
+          animate={{
+            x: swipeDistance,
+            rotate: rotation,
+            opacity: opacity
+          }}
+          exit={{
+            x: exitX,
+            opacity: 0,
+            transition: { duration: 0.2 }
+          }}
+          transition={{
+            type: "spring",
+            damping: 15,
+            stiffness: 150
+          }}
         >
-          <JobCard job={job} />
-        </div>
-      ))}
-      {isProcessing && (
-        <div className="processing-overlay">
-          <div className="processing-spinner"></div>
+          <JobCard job={currentJob} />
+        </motion.div>
+      </AnimatePresence>
+      {currentIndex < jobs.length - 1 && (
+        <div className="next-card-preview">
+          <JobCard job={jobs[currentIndex + 1]} />
         </div>
       )}
     </div>

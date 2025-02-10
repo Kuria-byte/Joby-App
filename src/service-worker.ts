@@ -10,6 +10,18 @@ import { Queue } from 'workbox-background-sync';
 
 declare const self: ServiceWorkerGlobalScope;
 
+interface PushNotificationData {
+  title?: string;
+  body?: string;
+  icon?: string;
+  badge?: string;
+  image?: string;
+  data?: {
+    url?: string;
+    [key: string]: any;
+  };
+}
+
 // Take control of all pages immediately
 clientsClaim();
 
@@ -127,7 +139,7 @@ self.addEventListener('push', (event: PushEvent) => {
 
   try {
     const data: PushNotificationData = event.data.json();
-    const options: NotificationOptions = {
+    const options: NotificationOptions & { vibrate?: number[] } = {
       body: data.body,
       icon: data.icon || '/logo192.png',
       badge: '/badge.png',
@@ -136,20 +148,19 @@ self.addEventListener('push', (event: PushEvent) => {
     };
 
     event.waitUntil(
-      self.registration.showNotification(data.title, options)
+      self.registration.showNotification(data.title || 'New Notification', options)
     );
   } catch (error) {
     console.error('Error showing push notification:', error);
   }
 });
 
-// Handle notification clicks
-self.addEventListener('notificationclick', (event: NotificationEvent) => {
+// Handle notification click
+self.addEventListener('notificationclick', (event) => {
   event.notification.close();
-
   if (event.notification.data?.url) {
     event.waitUntil(
-      clients.openWindow(event.notification.data.url)
+      self.clients.openWindow(event.notification.data.url)
     );
   }
 });

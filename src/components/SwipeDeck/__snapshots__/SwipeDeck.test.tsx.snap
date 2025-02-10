@@ -1,0 +1,188 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SwipeDeck matches snapshot 1`] = `
+<div
+  class="swipe-deck-container"
+>
+  <div
+    class="card-container"
+    style="transform: translateX(0px) rotate(0deg); opacity: 1; z-index: 2; position: absolute;"
+  >
+    <div
+      class="job-card"
+    >
+      <div
+        class="job-card-header"
+      >
+        <div
+          class="company-image"
+        >
+          <img
+            alt="Tech Co logo"
+            src="/icons/company-default.svg"
+          />
+        </div>
+        <div
+          class="company-info"
+        >
+          <h3
+            class="company-name"
+          >
+            Tech Co
+          </h3>
+          <div
+            class="job-meta"
+          >
+            <span
+              class="location"
+            >
+              <i
+                class="fas fa-map-marker-alt"
+              />
+               
+              New York
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="job-card-body"
+      >
+        <h2
+          class="job-title"
+        >
+          Frontend Developer
+        </h2>
+        <div
+          class="salary-badge"
+        >
+          <i
+            class="fas fa-money-bill-wave"
+          />
+           
+          $100k-$130k
+        </div>
+        <p
+          class="job-description"
+        >
+          Frontend role
+        </p>
+      </div>
+      <div
+        class="job-card-footer"
+      >
+        <div
+          class="action-buttons"
+        >
+          <button
+            class="btn-more-info"
+          >
+            <i
+              class="fas fa-info-circle"
+            />
+            More Info
+          </button>
+          <button
+            class="btn-apply"
+          >
+            <i
+              class="fas fa-paper-plane"
+            />
+            Apply Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="card-container"
+    style="transform: scale(0.95); opacity: 0.8; z-index: 1; position: absolute;"
+  >
+    <div
+      class="job-card"
+    >
+      <div
+        class="job-card-header"
+      >
+        <div
+          class="company-image"
+        >
+          <img
+            alt="Tech Inc logo"
+            src="/icons/company-default.svg"
+          />
+        </div>
+        <div
+          class="company-info"
+        >
+          <h3
+            class="company-name"
+          >
+            Tech Inc
+          </h3>
+          <div
+            class="job-meta"
+          >
+            <span
+              class="location"
+            >
+              <i
+                class="fas fa-map-marker-alt"
+              />
+               
+              Remote
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="job-card-body"
+      >
+        <h2
+          class="job-title"
+        >
+          Backend Developer
+        </h2>
+        <div
+          class="salary-badge"
+        >
+          <i
+            class="fas fa-money-bill-wave"
+          />
+           
+          $110k-$140k
+        </div>
+        <p
+          class="job-description"
+        >
+          Backend role
+        </p>
+      </div>
+      <div
+        class="job-card-footer"
+      >
+        <div
+          class="action-buttons"
+        >
+          <button
+            class="btn-more-info"
+          >
+            <i
+              class="fas fa-info-circle"
+            />
+            More Info
+          </button>
+          <button
+            class="btn-apply"
+          >
+            <i
+              class="fas fa-paper-plane"
+            />
+            Apply Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
