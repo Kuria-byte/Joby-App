@@ -121,6 +121,39 @@ registerRoute(
   })
 );
 
+// Handle push notifications
+self.addEventListener('push', (event: PushEvent) => {
+  if (!event.data) return;
+
+  try {
+    const data: PushNotificationData = event.data.json();
+    const options: NotificationOptions = {
+      body: data.body,
+      icon: data.icon || '/logo192.png',
+      badge: '/badge.png',
+      data: data.data,
+      vibrate: [200, 100, 200],
+    };
+
+    event.waitUntil(
+      self.registration.showNotification(data.title, options)
+    );
+  } catch (error) {
+    console.error('Error showing push notification:', error);
+  }
+});
+
+// Handle notification clicks
+self.addEventListener('notificationclick', (event: NotificationEvent) => {
+  event.notification.close();
+
+  if (event.notification.data?.url) {
+    event.waitUntil(
+      clients.openWindow(event.notification.data.url)
+    );
+  }
+});
+
 // Listen for sync events
 self.addEventListener('sync', (event) => {
   if (event.tag === 'swipeQueue') {

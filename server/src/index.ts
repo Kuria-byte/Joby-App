@@ -8,6 +8,7 @@ import { ChatHandler } from './socket/ChatHandler';
 import { MatchingService } from './services/MatchingService';
 import { ChatService } from './services/ChatService';
 import apiRoutes from './routes/api';
+import notificationRoutes from './routes/notificationRoutes';
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ const io = new Server(httpServer, {
 app.use(cors());
 app.use(express.json());
 app.use('/api', apiRoutes);
+app.use('/api/notifications', notificationRoutes);
 
 // Services
 const matchingService = new MatchingService();
