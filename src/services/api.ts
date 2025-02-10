@@ -6,6 +6,10 @@ export interface Job {
   company: string;
   location: string;
   description: string;
+  salary?: string;
+  imageUrl?: string;
+  postedDate?: string;
+  jobType?: string;
 }
 
 export const api = {
@@ -14,7 +18,15 @@ export const api = {
     if (!response.ok) {
       throw new Error('Failed to fetch jobs');
     }
-    return response.json();
+    const jobs = await response.json();
+    
+    // Add default values for optional fields if they're missing
+    return jobs.map((job: Job) => ({
+      ...job,
+      salary: job.salary || 'Salary not specified',
+      jobType: job.jobType || 'Full-time',
+      postedDate: job.postedDate || 'Recently'
+    }));
   },
 
   async likeJob(jobId: string): Promise<void> {
