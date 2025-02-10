@@ -79,7 +79,7 @@ const SwipeDeck: React.FC<SwipeDeckProps> = ({ jobs, userId, onStackEmpty, onErr
       }
     },
     trackMouse: true,
-    preventDefaultTouchmoveEvent: true,
+    preventScrollOnSwipe: true,
   });
 
   if (currentIndex >= jobs.length) {
