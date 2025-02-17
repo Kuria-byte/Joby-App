@@ -4,9 +4,10 @@ import { Job } from '../../services/api';
 
 interface JobCardProps {
   job: Job;
+  onLogout: () => void;
 }
 
-const JobCard: React.FC<JobCardProps> = ({ job }) => {
+const JobCard: React.FC<JobCardProps> = ({ job, onLogout }) => {
   const {
     title,
     company,
@@ -71,6 +72,7 @@ const JobCard: React.FC<JobCardProps> = ({ job }) => {
             <i className="fas fa-paper-plane"></i>
             Apply Now
           </button>
+          <button onClick={onLogout}>Logout</button>
         </div>
       </div>
     </div>

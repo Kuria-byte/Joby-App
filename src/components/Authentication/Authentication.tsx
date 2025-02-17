@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { authService, LoginCredentials, SignupCredentials } from '../../services/authService';
+import { authService, LoginCredentials, SignupCredentials, AuthResponse } from '../../services/authService';
 import { logError, showErrorToast } from '../../utils/errorUtils';
 import './Authentication.css';
 
@@ -54,7 +54,7 @@ const Authentication: React.FC<AuthenticationProps> = ({ onAuthSuccess }) => {
     setIsLoading(true);
 
     try {
-      const response = isLogin
+      const response: AuthResponse = isLogin
         ? await authService.login(formData as LoginCredentials)
         : await authService.signup(formData as SignupCredentials);
 

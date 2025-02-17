@@ -17,7 +17,8 @@ const mockJob: Job = {
 
 describe('JobCard', () => {
   it('renders job information correctly', () => {
-    render(<JobCard job={mockJob} />);
+    const mockOnLogout = jest.fn();
+    render(<JobCard job={mockJob} onLogout={mockOnLogout} />);
     
     expect(screen.getByText('Tech Corp')).toBeInTheDocument();
     expect(screen.getByText('San Francisco, CA')).toBeInTheDocument();
@@ -27,7 +28,8 @@ describe('JobCard', () => {
   });
 
   it('uses default image when company logo fails to load', () => {
-    render(<JobCard job={mockJob} />);
+    const mockOnLogout = jest.fn();
+    render(<JobCard job={mockJob} onLogout={mockOnLogout} />);
     
     const img = screen.getByAltText('Tech Corp logo') as HTMLImageElement;
     fireEvent.error(img);
@@ -44,7 +46,8 @@ describe('JobCard', () => {
       description: 'Great opportunity'
     };
 
-    render(<JobCard job={jobWithoutOptionals} />);
+    const mockOnLogout = jest.fn();
+    render(<JobCard job={jobWithoutOptionals} onLogout={mockOnLogout} />);
     
     expect(screen.getByText('Startup Inc')).toBeInTheDocument();
     expect(screen.getByText('Remote')).toBeInTheDocument();
@@ -53,7 +56,8 @@ describe('JobCard', () => {
   });
 
   it('matches snapshot', () => {
-    const { container } = render(<JobCard job={mockJob} />);
+    const mockOnLogout = jest.fn();
+    const { container } = render(<JobCard job={mockJob} onLogout={mockOnLogout} />);
     expect(container.firstChild).toMatchSnapshot();
   });
 });

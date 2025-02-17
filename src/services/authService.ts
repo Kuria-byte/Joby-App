@@ -19,84 +19,31 @@ export interface AuthResponse {
   };
 }
 
-class AuthService {
-  private baseURL = '/api/auth';
-  private tokenKey = 'joby_auth_token';
+// Simple authentication functions
+export const login = (email: string, password: string): Promise<boolean> => {
+    // Here you can implement your login logic
+    // For now, we will just simulate a successful login
+    return new Promise((resolve) => {
+        setTimeout(() => resolve(true), 1000);
+    });
+};
 
-  async login(credentials: LoginCredentials): Promise<AuthResponse> {
-    try {
-      const response = await axios.post(`${this.baseURL}/login`, credentials);
-      this.setToken(response.data.token);
-      return response.data;
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        if (error.response?.status === 401) {
-          throw new Error('Invalid email or password');
-        }
-        if (error.response?.status === 429) {
-          throw new Error('Too many login attempts. Please try again later');
-        }
-      }
-      throw new Error('Login failed. Please try again');
-    }
+export const logout = (): void => {
+    // Implement logout logic here (e.g., clear tokens)
+    console.log('User logged out');
+};
+
+export const authService = {
+  login: async (credentials: LoginCredentials): Promise<AuthResponse> => {
+    const response = await axios.post('/api/login', credentials);
+    return response.data as AuthResponse;
+  },
+  signup: async (credentials: SignupCredentials): Promise<AuthResponse> => {
+    const response = await axios.post('/api/signup', credentials);
+    return response.data as AuthResponse;
+  },
+  authenticate: async (credentials: LoginCredentials): Promise<AuthResponse> => {
+    const response = await axios.post('/api/authenticate', credentials);
+    return response.data as AuthResponse;
   }
-
-  async signup(credentials: SignupCredentials): Promise<AuthResponse> {
-    if (credentials.password !== credentials.confirmPassword) {
-      throw new Error('Passwords do not match');
-    }
-
-    try {
-      const response = await axios.post(`${this.baseURL}/signup`, credentials);
-      this.setToken(response.data.token);
-      return response.data;
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        if (error.response?.status === 409) {
-          throw new Error('Email already exists');
-        }
-        if (error.response?.status === 400) {
-          throw new Error('Invalid signup information');
-        }
-      }
-      throw new Error('Signup failed. Please try again');
-    }
-  }
-
-  async logout(): Promise<void> {
-    try {
-      await axios.post(`${this.baseURL}/logout`);
-    } finally {
-      this.removeToken();
-    }
-  }
-
-  async validateToken(): Promise<boolean> {
-    const token = this.getToken();
-    if (!token) return false;
-
-    try {
-      await axios.get(`${this.baseURL}/validate`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      return true;
-    } catch {
-      this.removeToken();
-      return false;
-    }
-  }
-
-  getToken(): string | null {
-    return localStorage.getItem(this.tokenKey);
-  }
-
-  private setToken(token: string): void {
-    localStorage.setItem(this.tokenKey, token);
-  }
-
-  private removeToken(): void {
-    localStorage.removeItem(this.tokenKey);
-  }
-}
-
-export const authService = new AuthService();
+};

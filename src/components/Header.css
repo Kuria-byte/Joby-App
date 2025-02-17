@@ -1,0 +1,37 @@
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #007bff; /* Brand color */
+  color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+}
+
+.app-header:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #ffdd57; /* Highlight color on hover */
+}
+
+.account-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+}

@@ -82,6 +82,11 @@ const SwipeDeck: React.FC<SwipeDeckProps> = ({ jobs, userId, onStackEmpty, onErr
     preventScrollOnSwipe: true,
   });
 
+  const handleLogout = () => {
+    console.log('User logged out');
+    // Add your logout logic here
+  };
+
   if (currentIndex >= jobs.length) {
     return <div className="swipe-deck-empty">No more jobs to show</div>;
   }
@@ -113,12 +118,12 @@ const SwipeDeck: React.FC<SwipeDeckProps> = ({ jobs, userId, onStackEmpty, onErr
             stiffness: 150
           }}
         >
-          <JobCard job={currentJob} />
+          <JobCard job={currentJob} onLogout={handleLogout} />
         </motion.div>
       </AnimatePresence>
       {currentIndex < jobs.length - 1 && (
         <div className="next-card-preview">
-          <JobCard job={jobs[currentIndex + 1]} />
+          <JobCard job={jobs[currentIndex + 1]} onLogout={handleLogout} />
         </div>
       )}
     </div>

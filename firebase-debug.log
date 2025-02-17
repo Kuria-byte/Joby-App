@@ -1,0 +1,239 @@
+[debug] [2025-02-17T12:44:16.685Z] ----------------------------------------------------------------------
+[debug] [2025-02-17T12:44:16.690Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\USER\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2025-02-17T12:44:16.693Z] CLI Version:   13.31.1
+[debug] [2025-02-17T12:44:16.694Z] Platform:      win32
+[debug] [2025-02-17T12:44:16.694Z] Node Version:  v22.13.1
+[debug] [2025-02-17T12:44:16.695Z] Time:          Mon Feb 17 2025 15:44:16 GMT+0300 (East Africa Time)
+[debug] [2025-02-17T12:44:16.696Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-02-17T12:44:16.714Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-02-17T12:44:16.715Z] > authorizing via signed-in user (mwitumi21@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\USER\Desktop\2025 Web Projects\Joby App
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2025-02-17T12:45:53.689Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:45:53.689Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:45:53.691Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2025-02-17T12:45:54.520Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2025-02-17T12:45:54.521Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] i  Using project joby-app-kenya (Joby App) 
+[info] 
+=== Dataconnect Setup
+[debug] [2025-02-17T12:45:56.818Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:45:56.818Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:45:56.818Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/joby-app-kenya/billingInfo [none]
+[debug] [2025-02-17T12:45:57.898Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/joby-app-kenya/billingInfo 200
+[debug] [2025-02-17T12:45:57.898Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/joby-app-kenya/billingInfo {"name":"projects/joby-app-kenya/billingInfo","projectId":"joby-app-kenya","billingAccountName":"","billingEnabled":false}
+[info] i  dataconnect: ensuring required API sqladmin.googleapis.com is enabled... 
+[debug] [2025-02-17T12:45:57.900Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:45:57.900Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:45:57.900Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/sqladmin.googleapis.com [none]
+[debug] [2025-02-17T12:45:57.900Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/sqladmin.googleapis.com x-goog-quota-user=projects/joby-app-kenya
+[debug] [2025-02-17T12:46:00.017Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/sqladmin.googleapis.com 200
+[debug] [2025-02-17T12:46:00.017Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/sqladmin.googleapis.com [omitted]
+[warn] !  dataconnect: missing required API sqladmin.googleapis.com. Enabling now... 
+[debug] [2025-02-17T12:46:00.021Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:46:00.021Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:46:00.021Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/sqladmin.googleapis.com:enable [none]
+[debug] [2025-02-17T12:46:00.021Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/sqladmin.googleapis.com:enable x-goog-quota-user=projects/joby-app-kenya
+[debug] [2025-02-17T12:46:02.106Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/sqladmin.googleapis.com:enable 200
+[debug] [2025-02-17T12:46:02.106Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/sqladmin.googleapis.com:enable [omitted]
+[debug] [2025-02-17T12:46:12.111Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:46:12.112Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:46:12.113Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/sqladmin.googleapis.com [none]
+[debug] [2025-02-17T12:46:12.113Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/sqladmin.googleapis.com x-goog-quota-user=projects/joby-app-kenya
+[debug] [2025-02-17T12:46:14.010Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/sqladmin.googleapis.com 200
+[debug] [2025-02-17T12:46:14.010Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/sqladmin.googleapis.com [omitted]
+[info] +  dataconnect: required API sqladmin.googleapis.com is enabled 
+[info] +  Wrote dataconnect\dataconnect.yaml 
+[info] +  Wrote dataconnect\schema\schema.gql 
+[info] +  Wrote dataconnect\connector\connector.yaml 
+[info] +  Wrote dataconnect\connector\queries.gql 
+[info] +  Wrote dataconnect\connector\mutations.gql 
+[info] +  Detected WEB app in directory C:\Users\USER\Desktop\2025 Web Projects\Joby App 
+[info] i  Wrote new config to C:\Users\USER\Desktop\2025 Web Projects\Joby App\dataconnect\connector/connector.yaml 
+[info] i  dataconnect: downloading dataconnect-emulator-1.8.1.exe... {"metadata":{"emulator":{"name":"dataconnect"},"message":"downloading dataconnect-emulator-1.8.1.exe..."}}
+[debug] [2025-02-17T12:46:25.323Z] >>> [apiv2][query] GET https://storage.googleapis.com/firemat-preview-drop/emulator/dataconnect-emulator-windows-v1.8.1 
+[debug] [2025-02-17T12:46:25.991Z] <<< [apiv2][status] GET https://storage.googleapis.com/firemat-preview-drop/emulator/dataconnect-emulator-windows-v1.8.1 200
+[debug] [2025-02-17T12:46:25.992Z] <<< [apiv2][body] GET https://storage.googleapis.com/firemat-preview-drop/emulator/dataconnect-emulator-windows-v1.8.1 [stream]
+[info] I0217 15:46:40.721832    8572 codegen.go:82] [connector "default" javascriptSdk] Generating sources into "C:\\Users\\USER\\Desktop\\2025 Web Projects\\Joby App\\dataconnect-generated\\js\\default-connector"
+I0217 15:46:40.730339    8572 generate.go:40] Generated all sources. Writing them to disk...
+I0217 15:46:40.770225    8572 collector.go:107] connector "default" javascriptSdk wrote into "C:\\Users\\USER\\Desktop\\2025 Web Projects\\Joby App\\dataconnect-generated\\js\\default-connector"
+Generated sources: index.d.ts [259B] esm\index.esm.js [166B] README.md [2740B] react\package.json [468B] react\esm\package.json [17B] esm\package.json [17B] index.cjs.js [207B] package.json [819B] react\index.d.ts [181B] react\index.cjs.js [195B] react\esm\index.esm.js [182B] 
+I0217 15:46:40.838885    8572 installsdk.go:76] Running command: C:\Program Files\nodejs\npm.cmd install file:dataconnect-generated\js\default-connector
+E0217 15:46:48.530401    8572 installsdk.go:78] Failed to install package: exit status 1
+
+[info] i  Generated SDK code for default 
+[info] +  If you'd like to add more generated SDKs to your app your later, run firebase init dataconnect:sdk again 
+[info] i  If you'd like to provision a CloudSQL Postgres instance on the Firebase Data Connect no-cost trial:
+1. Please upgrade to the pay-as-you-go (Blaze) billing plan. Visit the following page:
+     https://console.firebase.google.com/project/joby-app-kenya/usage/details
+2. Run firebase init dataconnect again to configure the Cloud SQL instance.
+3. Run firebase deploy --only dataconnect to deploy your Data Connect service. 
+[info] 
+=== Firestore Setup
+[debug] [2025-02-17T12:46:48.560Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:46:48.560Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:46:48.560Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/firestore.googleapis.com [none]
+[debug] [2025-02-17T12:46:48.560Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/firestore.googleapis.com x-goog-quota-user=projects/joby-app-kenya
+[debug] [2025-02-17T12:46:49.249Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/firestore.googleapis.com 200
+[debug] [2025-02-17T12:46:49.249Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/firestore.googleapis.com [omitted]
+[debug] [2025-02-17T12:46:49.250Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:46:49.250Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:46:49.251Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/joby-app-kenya/databases/(default) [none]
+[debug] [2025-02-17T12:46:50.706Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/joby-app-kenya/databases/(default) 200
+[debug] [2025-02-17T12:46:50.706Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/joby-app-kenya/databases/(default) {"name":"projects/joby-app-kenya/databases/(default)","uid":"b3601177-bc51-45d9-8548-08ccac876291","createTime":"2025-02-17T12:22:05.836125Z","updateTime":"2025-02-17T12:22:05.836125Z","locationId":"eur3","type":"FIRESTORE_NATIVE","concurrencyMode":"PESSIMISTIC","versionRetentionPeriod":"3600s","earliestVersionTime":"2025-02-17T12:22:05.836125Z","appEngineIntegrationMode":"DISABLED","keyPrefix":"e","pointInTimeRecoveryEnablement":"POINT_IN_TIME_RECOVERY_DISABLED","deleteProtectionState":"DELETE_PROTECTION_DISABLED","databaseEdition":"STANDARD","etag":"ILvRpdjeyosDMN2upZTZyosD"}
+[debug] [2025-02-17T12:46:50.707Z] database_type: FIRESTORE_NATIVE
+[debug] [2025-02-17T12:46:50.707Z] database_type: FIRESTORE_NATIVE
+[debug] [2025-02-17T12:46:50.707Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-02-17T12:46:50.708Z] > authorizing via signed-in user (mwitumi21@gmail.com)
+[debug] [2025-02-17T12:46:50.708Z] [iam] checking project joby-app-kenya for permissions ["firebase.projects.get"]
+[debug] [2025-02-17T12:46:50.708Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:46:50.709Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:46:50.709Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/joby-app-kenya:testIamPermissions [none]
+[debug] [2025-02-17T12:46:50.709Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/joby-app-kenya:testIamPermissions x-goog-quota-user=projects/joby-app-kenya
+[debug] [2025-02-17T12:46:50.709Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/joby-app-kenya:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-02-17T12:46:51.225Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/joby-app-kenya:testIamPermissions 200
+[debug] [2025-02-17T12:46:51.225Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/joby-app-kenya:testIamPermissions {"permissions":["firebase.projects.get"]}
+[info] 
+[info] Firestore Security Rules allow you to define how and when to allow
+[info] requests. You can keep these rules in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[debug] [2025-02-17T12:47:16.658Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:47:16.658Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:47:16.659Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/joby-app-kenya/releases pageSize=10&pageToken=
+[debug] [2025-02-17T12:47:17.917Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/joby-app-kenya/releases 200
+[debug] [2025-02-17T12:47:17.918Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/joby-app-kenya/releases {"releases":[{"name":"projects/joby-app-kenya/releases/cloud.firestore","rulesetName":"projects/joby-app-kenya/rulesets/1cab56e6-ae05-4292-a8a1-1830f003c574","createTime":"2025-02-17T12:22:11.867654Z","updateTime":"2025-02-17T12:22:11.867654Z"}]}
+[debug] [2025-02-17T12:47:17.918Z] Found ruleset: projects/joby-app-kenya/rulesets/1cab56e6-ae05-4292-a8a1-1830f003c574
+[debug] [2025-02-17T12:47:17.918Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:47:17.918Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:47:17.918Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/joby-app-kenya/rulesets/1cab56e6-ae05-4292-a8a1-1830f003c574 [none]
+[debug] [2025-02-17T12:47:18.741Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/joby-app-kenya/rulesets/1cab56e6-ae05-4292-a8a1-1830f003c574 200
+[debug] [2025-02-17T12:47:18.741Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/joby-app-kenya/rulesets/1cab56e6-ae05-4292-a8a1-1830f003c574 [omitted]
+[info] 
+[info] Firestore indexes allow you to perform complex queries while
+[info] maintaining performance that scales with the size of the result
+[info] set. You can keep index definitions in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[debug] [2025-02-17T12:47:26.803Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:47:26.804Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:47:26.804Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:47:26.804Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:47:26.804Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/joby-app-kenya/databases/(default)/collectionGroups/-/indexes [none]
+[debug] [2025-02-17T12:47:26.806Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/joby-app-kenya/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* [none]
+[debug] [2025-02-17T12:47:28.368Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/joby-app-kenya/databases/(default)/collectionGroups/-/indexes 200
+[debug] [2025-02-17T12:47:28.368Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/joby-app-kenya/databases/(default)/collectionGroups/-/indexes {}
+[debug] [2025-02-17T12:47:28.527Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/joby-app-kenya/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* 200
+[debug] [2025-02-17T12:47:28.527Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/joby-app-kenya/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* {"fields":[{"name":"projects/joby-app-kenya/databases/(default)/collectionGroups/__default__/fields/*","indexConfig":{"indexes":[{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","order":"ASCENDING"}],"state":"READY"},{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","order":"DESCENDING"}],"state":"READY"},{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","arrayConfig":"CONTAINS"}],"state":"READY"}]}}]}
+[info] 
+=== Genkit Setup
+[debug] [2025-02-17T12:47:40.010Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-02-17T12:47:40.010Z] > authorizing via signed-in user (mwitumi21@gmail.com)
+[debug] [2025-02-17T12:47:40.010Z] [iam] checking project joby-app-kenya for permissions ["firebase.projects.get"]
+[debug] [2025-02-17T12:47:40.010Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:47:40.010Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:47:40.010Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/joby-app-kenya:testIamPermissions [none]
+[debug] [2025-02-17T12:47:40.010Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/joby-app-kenya:testIamPermissions x-goog-quota-user=projects/joby-app-kenya
+[debug] [2025-02-17T12:47:40.010Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/joby-app-kenya:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-02-17T12:47:41.751Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/joby-app-kenya:testIamPermissions 200
+[debug] [2025-02-17T12:47:41.751Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/joby-app-kenya:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-02-17T12:47:41.751Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:47:41.751Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:47:41.751Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:47:41.751Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:47:41.752Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-02-17T12:47:41.752Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/joby-app-kenya
+[debug] [2025-02-17T12:47:41.754Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/runtimeconfig.googleapis.com [none]
+[debug] [2025-02-17T12:47:41.754Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/joby-app-kenya
+[debug] [2025-02-17T12:47:43.748Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/runtimeconfig.googleapis.com 200
+[debug] [2025-02-17T12:47:43.748Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2025-02-17T12:47:43.749Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/cloudfunctions.googleapis.com 200
+[debug] [2025-02-17T12:47:43.749Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2025-02-17T12:47:43.750Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:47:43.750Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:47:43.750Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/cloudfunctions.googleapis.com:enable [none]
+[debug] [2025-02-17T12:47:43.750Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/cloudfunctions.googleapis.com:enable x-goog-quota-user=projects/joby-app-kenya
+[debug] [2025-02-17T12:47:44.480Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/cloudfunctions.googleapis.com:enable 200
+[debug] [2025-02-17T12:47:44.480Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/cloudfunctions.googleapis.com:enable [omitted]
+[debug] [2025-02-17T12:47:54.482Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:47:54.483Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:47:54.483Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-02-17T12:47:54.483Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/joby-app-kenya
+[debug] [2025-02-17T12:47:56.350Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/cloudfunctions.googleapis.com 200
+[debug] [2025-02-17T12:47:56.350Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/cloudfunctions.googleapis.com [omitted]
+[info] Let's create a new codebase for your functions.
+[info] A directory corresponding to the codebase will be created in your project
+[info] with sample code pre-configured.
+
+[info] See https://firebase.google.com/docs/functions/organize-functions for
+[info] more information on organizing your functions using codebases.
+
+[info] Functions can be deployed with firebase deploy.
+
+[info] +  Wrote functions/package.json 
+[info] +  Wrote functions/.eslintrc.js 
+[info] +  Wrote functions/tsconfig.json 
+[info] +  Wrote functions/tsconfig.dev.json 
+[info] +  Wrote functions/src/index.ts 
+[info] +  Wrote functions/.gitignore 
+[info] 
+[info] i  genkit: Installing Genkit CLI version 1.0.4
+ 
+[info] i  genkit: Installing NPM packages for genkit 
+[info] +  genkit: Successfully installed NPM packages 
+[info] i  genkit: Updating tsconfig.json 
+[info] +  genkit: Successfully updated tsconfig.json 
+[info] i  genkit: Updating package.json 
+[info] +  genkit: Successfully updated package.json 
+[info] i  genkit: Generating sample file 
+[info] +  genkit: Successfully generated sample file (src/genkit-sample.ts) 
+[info] 
+Login to Google Cloud using:
+[info]     gcloud auth application-default login --project undefined
+
+[info] Then start the Genkit developer experience by running:
+[info]     cd functions && npm run genkit:start
+[info] 
+=== Functions Setup
+[debug] [2025-02-17T12:54:29.421Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-02-17T12:54:29.421Z] > authorizing via signed-in user (mwitumi21@gmail.com)
+[debug] [2025-02-17T12:54:29.421Z] [iam] checking project joby-app-kenya for permissions ["firebase.projects.get"]
+[debug] [2025-02-17T12:54:29.421Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:54:29.421Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:54:29.421Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/joby-app-kenya:testIamPermissions [none]
+[debug] [2025-02-17T12:54:29.421Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/joby-app-kenya:testIamPermissions x-goog-quota-user=projects/joby-app-kenya
+[debug] [2025-02-17T12:54:29.422Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/joby-app-kenya:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-02-17T12:54:31.153Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/joby-app-kenya:testIamPermissions 200
+[debug] [2025-02-17T12:54:31.154Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/joby-app-kenya:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-02-17T12:54:31.155Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:54:31.156Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:54:31.157Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:54:31.157Z] Checked if tokens are valid: true, expires at: 1739799757416
+[debug] [2025-02-17T12:54:31.158Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-02-17T12:54:31.158Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/joby-app-kenya
+[debug] [2025-02-17T12:54:31.171Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/runtimeconfig.googleapis.com [none]
+[debug] [2025-02-17T12:54:31.172Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/joby-app-kenya
+[debug] [2025-02-17T12:54:33.558Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/runtimeconfig.googleapis.com 200
+[debug] [2025-02-17T12:54:33.559Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2025-02-17T12:54:33.565Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/cloudfunctions.googleapis.com 200
+[debug] [2025-02-17T12:54:33.566Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/joby-app-kenya/services/cloudfunctions.googleapis.com [omitted]
+[info] 
+Detected existing codebase(s): default
+
