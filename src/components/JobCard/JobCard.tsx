@@ -4,10 +4,11 @@ import { Job } from '../../services/api';
 
 interface JobCardProps {
   job: Job;
-  onLogout: () => void;
+  onLogout?: () => void;
+  onSelect?: (job: Job) => void;
 }
 
-const JobCard: React.FC<JobCardProps> = ({ job, onLogout }) => {
+const JobCard: React.FC<JobCardProps> = ({ job, onLogout, onSelect }) => {
   const {
     title,
     company,
@@ -22,7 +23,7 @@ const JobCard: React.FC<JobCardProps> = ({ job, onLogout }) => {
   const defaultImage = '/icons/company-default.svg';
 
   return (
-    <div className="job-card">
+    <div className="job-card" onClick={() => onSelect && onSelect(job)}>
       <div className="job-card-header">
         <div className="company-image">
           <img 
@@ -72,7 +73,9 @@ const JobCard: React.FC<JobCardProps> = ({ job, onLogout }) => {
             <i className="fas fa-paper-plane"></i>
             Apply Now
           </button>
-          <button onClick={onLogout}>Logout</button>
+          {onLogout && (
+            <button onClick={onLogout}>Logout</button>
+          )}
         </div>
       </div>
     </div>

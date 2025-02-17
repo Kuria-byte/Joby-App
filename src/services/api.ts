@@ -6,7 +6,7 @@ export interface Job {
   company: string;
   location: string;
   description: string;
-  salary?: string;
+  salary: string; // Ensure salary is a string only
   imageUrl?: string;
   postedDate?: string;
   jobType?: string;

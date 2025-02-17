@@ -2,6 +2,7 @@ import React, { useState, useRef, useCallback } from 'react';
 import { useSwipeable, SwipeEventData } from 'react-swipeable';
 import { motion, AnimatePresence } from 'framer-motion';
 import JobCard from '../JobCard/JobCard';
+import JobDetailModal from '../../pages/Job Modal/JobDetailModal';// Import the modal component
 import { Job } from '../../services/api';
 import { jobAPI } from '../../services/jobAPI';
 import { logError, showErrorToast } from '../../utils/errorUtils';
@@ -22,41 +23,50 @@ const SwipeDeck: React.FC<SwipeDeckProps> = ({ jobs, userId, onStackEmpty, onErr
   const [swipeDistance, setSwipeDistance] = useState(0);
   const [isProcessing, setIsProcessing] = useState(false);
   const [exitX, setExitX] = useState(0);
+  const [selectedJob, setSelectedJob] = useState<Job | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleSwipeAction = useCallback(async (direction: 'left' | 'right') => {
     if (isProcessing) return;
 
-    const currentJob = jobs[currentIndex];
     setIsProcessing(true);
     setExitX(direction === 'right' ? 1000 : -1000);
 
-    try {
-      if (direction === 'right') {
-        await jobAPI.recordJobInterest(currentJob.id, userId);
-      } else {
-        await jobAPI.dismissJob(currentJob.id, userId);
+    setCurrentIndex(prev => {
+      const newIndex = prev + 1;
+      if (newIndex >= jobs.length) {
+        onStackEmpty();
       }
+      return newIndex;
+    });
 
-      setCurrentIndex(prev => {
-        const newIndex = prev + 1;
-        if (newIndex >= jobs.length) {
-          onStackEmpty();
-        }
-        return newIndex;
-      });
-    } catch (error) {
-      logError(error as Error, 'SwipeDeck', userId, {
-        jobId: currentJob.id,
-        action: direction
-      });
-      showErrorToast(error as Error);
-      onError?.(error as Error);
-    } finally {
-      setIsProcessing(false);
-      setSwipeDistance(0);
-      setExitX(0);
-    }
-  }, [currentIndex, jobs, userId, isProcessing, onStackEmpty, onError]);
+    setIsProcessing(false);
+    setSwipeDistance(0);
+    setExitX(0);
+  }, [currentIndex, jobs, onStackEmpty]);
+
+  const handleLogout = () => {
+    console.log('User logged out');
+    // Add your logout logic here, e.g., clearing user session or redirecting
+  };
+
+  const handleJobSelect = (job: Job) => {
+    const jobDetails = {
+      id: job.id,
+      title: job.title,
+      company: job.company,
+      description: job.description,
+      location: job.location,
+      salary: job.salary !== undefined ? job.salary : 'Not specified', 
+    };
+    setSelectedJob(jobDetails);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedJob(null);
+  };
 
   const handlers = useSwipeable({
     onSwiping: (eventData: SwipeEventData) => {
@@ -81,11 +91,6 @@ const SwipeDeck: React.FC<SwipeDeckProps> = ({ jobs, userId, onStackEmpty, onErr
     trackMouse: true,
     preventScrollOnSwipe: true,
   });
-
-  const handleLogout = () => {
-    console.log('User logged out');
-    // Add your logout logic here
-  };
 
   if (currentIndex >= jobs.length) {
     return <div className="swipe-deck-empty">No more jobs to show</div>;
@@ -118,7 +123,7 @@ const SwipeDeck: React.FC<SwipeDeckProps> = ({ jobs, userId, onStackEmpty, onErr
             stiffness: 150
           }}
         >
-          <JobCard job={currentJob} onLogout={handleLogout} />
+          <JobCard job={currentJob} onSelect={handleJobSelect} />
         </motion.div>
       </AnimatePresence>
       {currentIndex < jobs.length - 1 && (
@@ -126,6 +131,7 @@ const SwipeDeck: React.FC<SwipeDeckProps> = ({ jobs, userId, onStackEmpty, onErr
           <JobCard job={jobs[currentIndex + 1]} onLogout={handleLogout} />
         </div>
       )}
+      {isModalOpen && <JobDetailModal job={selectedJob} onClose={closeModal} />}
     </div>
   );
 };

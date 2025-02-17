@@ -43,7 +43,11 @@ describe('JobCard', () => {
       title: 'Developer',
       company: 'Startup Inc',
       location: 'Remote',
-      description: 'Great opportunity'
+      description: 'Great opportunity',
+      salary: 'Not specified', 
+      imageUrl: '',
+      postedDate: '2025-02-11',
+      jobType: 'Full-time' 
     };
 
     const mockOnLogout = jest.fn();

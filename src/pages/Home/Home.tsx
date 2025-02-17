@@ -58,7 +58,7 @@ const Home: React.FC = () => {
         jobs={jobs}
         userId={MOCK_USER_ID}
         onStackEmpty={handleStackEmpty}
-        onError={handleError}
+        // onError={handleError}
       />
     </div>
   );
