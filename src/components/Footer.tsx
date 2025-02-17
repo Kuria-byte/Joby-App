@@ -1,9 +1,9 @@
 import React from 'react';
-import './Footer.css'; // Create a CSS file for styles
+import './Footer.css'; // Import any necessary CSS styles
 
 const Footer: React.FC = () => {
   return (
-    <footer className="app-footer">
+    <footer className="footer">
       <p>&copy; 2025 Joby App. All rights reserved.</p>
     </footer>
   );

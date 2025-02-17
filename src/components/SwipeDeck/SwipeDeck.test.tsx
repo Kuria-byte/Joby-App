@@ -2,6 +2,7 @@ import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import SwipeDeck from './SwipeDeck';
+import JobInfoPanel from '../JobCard/JobInfoPanel';
 import { jobAPI } from '../../services/jobAPI';
 
 // Mock the jobAPI
@@ -20,6 +21,10 @@ const mockJobs = [
     location: 'New York',
     description: 'Frontend role',
     salary: '$100k-$130k',
+    imageUrl: 'https://example.com/logo.png',
+    postedDate: '2025-02-11',
+    jobType: 'Full-time',
+    requirements: 'Experience with JavaScript and React.'
   },
   {
     id: '2',
@@ -28,6 +33,10 @@ const mockJobs = [
     location: 'Remote',
     description: 'Backend role',
     salary: '$110k-$140k',
+    imageUrl: 'https://example.com/logo.png',
+    postedDate: '2025-02-11',
+    jobType: 'Full-time',
+    requirements: 'Experience with JavaScript and React.'
   },
 ];
 

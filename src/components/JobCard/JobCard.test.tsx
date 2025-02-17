@@ -3,6 +3,9 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import JobCard from './JobCard';
 import { Job } from '../../services/api';
 
+
+const mockOnInfo = jest.fn();
+
 const mockJob: Job = {
   id: '1',
   title: 'Software Engineer',
@@ -12,13 +15,14 @@ const mockJob: Job = {
   salary: '$120,000 - $150,000',
   imageUrl: 'https://example.com/logo.png',
   postedDate: '2025-02-11',
-  jobType: 'Full-time'
+  jobType: 'Full-time',
+  requirements: 'Experience with JavaScript and React.'
 };
 
 describe('JobCard', () => {
   it('renders job information correctly', () => {
     const mockOnLogout = jest.fn();
-    render(<JobCard job={mockJob} onLogout={mockOnLogout} />);
+    render(<JobCard job={mockJob} onInfo={mockOnInfo} />);
     
     expect(screen.getByText('Tech Corp')).toBeInTheDocument();
     expect(screen.getByText('San Francisco, CA')).toBeInTheDocument();
@@ -29,7 +33,7 @@ describe('JobCard', () => {
 
   it('uses default image when company logo fails to load', () => {
     const mockOnLogout = jest.fn();
-    render(<JobCard job={mockJob} onLogout={mockOnLogout} />);
+    render(<JobCard job={mockJob}  onInfo={mockOnInfo} />);
     
     const img = screen.getByAltText('Tech Corp logo') as HTMLImageElement;
     fireEvent.error(img);
@@ -47,11 +51,12 @@ describe('JobCard', () => {
       salary: 'Not specified', 
       imageUrl: '',
       postedDate: '2025-02-11',
-      jobType: 'Full-time' 
+      jobType: 'Full-time' ,
+      requirements: 'Experience with JavaScript and React.'
     };
 
     const mockOnLogout = jest.fn();
-    render(<JobCard job={jobWithoutOptionals} onLogout={mockOnLogout} />);
+    render(<JobCard job={jobWithoutOptionals}  onInfo={mockOnInfo} />);
     
     expect(screen.getByText('Startup Inc')).toBeInTheDocument();
     expect(screen.getByText('Remote')).toBeInTheDocument();
@@ -61,7 +66,7 @@ describe('JobCard', () => {
 
   it('matches snapshot', () => {
     const mockOnLogout = jest.fn();
-    const { container } = render(<JobCard job={mockJob} onLogout={mockOnLogout} />);
+    const { container } = render(<JobCard job={mockJob} onInfo={mockOnInfo} />);
     expect(container.firstChild).toMatchSnapshot();
   });
 });

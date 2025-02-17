@@ -225,3 +225,44 @@
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
+
+.floating-icons {
+  position: fixed;
+  bottom: 20px; /* Distance from the bottom */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust for centering */
+  display: flex;
+  gap: 20px; /* Space between icons */
+}
+
+.icon {
+  width: 56px; /* Icon size */
+  height: 56px; /* Icon size */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%; /* Circular shape */
+  background-color: transparent; /* Clear background */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: transform 0.2s, box-shadow 0.2s; /* Smooth transition for hover effect */
+}
+
+.icon:hover {
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+.reject {
+  color: red; /* Red color for reject icon */
+}
+
+.like {
+  color: black; /* Updated color for like icon */
+}
+
+.revert {
+  color: blue; /* Blue color for revert icon */
+}
+
+.info {
+  color: blue; /* Blue color for info icon */
+}

@@ -4,9 +4,10 @@ export interface Job {
   id: string;
   title: string;
   company: string;
-  location: string;
   description: string;
-  salary: string; // Ensure salary is a string only
+  requirements: string; 
+  location: string;
+  salary: string; 
   imageUrl?: string;
   postedDate?: string;
   jobType?: string;

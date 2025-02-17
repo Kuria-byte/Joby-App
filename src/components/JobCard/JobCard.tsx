@@ -4,11 +4,11 @@ import { Job } from '../../services/api';
 
 interface JobCardProps {
   job: Job;
-  onLogout?: () => void;
   onSelect?: (job: Job) => void;
+  onInfo: (job: Job) => void;
 }
 
-const JobCard: React.FC<JobCardProps> = ({ job, onLogout, onSelect }) => {
+const JobCard: React.FC<JobCardProps> = ({ job, onSelect, onInfo }) => {
   const {
     title,
     company,
@@ -65,7 +65,7 @@ const JobCard: React.FC<JobCardProps> = ({ job, onLogout, onSelect }) => {
           </span>
         )}
         <div className="action-buttons">
-          <button className="btn-more-info">
+          <button className="btn-more-info" onClick={() => onInfo && onInfo(job)}>
             <i className="fas fa-info-circle"></i>
             More Info
           </button>
@@ -73,9 +73,6 @@ const JobCard: React.FC<JobCardProps> = ({ job, onLogout, onSelect }) => {
             <i className="fas fa-paper-plane"></i>
             Apply Now
           </button>
-          {onLogout && (
-            <button onClick={onLogout}>Logout</button>
-          )}
         </div>
       </div>
     </div>

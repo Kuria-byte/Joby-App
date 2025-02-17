@@ -3,10 +3,12 @@ import { useSwipeable, SwipeEventData } from 'react-swipeable';
 import { motion, AnimatePresence } from 'framer-motion';
 import JobCard from '../JobCard/JobCard';
 import JobDetailModal from '../../pages/Job Modal/JobDetailModal';// Import the modal component
+import JobInfoPanel from '../JobCard/JobInfoPanel';// Import the new panel component
 import { Job } from '../../services/api';
 import { jobAPI } from '../../services/jobAPI';
 import { logError, showErrorToast } from '../../utils/errorUtils';
 import './SwipeDeck.css';
+import { FaHeart, FaTimes, FaArrowLeft, FaInfoCircle } from 'react-icons/fa'; // Import icons
 
 interface SwipeDeckProps {
   jobs: Job[];
@@ -25,6 +27,7 @@ const SwipeDeck: React.FC<SwipeDeckProps> = ({ jobs, userId, onStackEmpty, onErr
   const [exitX, setExitX] = useState(0);
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isPanelOpen, setIsPanelOpen] = useState(false);
 
   const handleSwipeAction = useCallback(async (direction: 'left' | 'right') => {
     if (isProcessing) return;
@@ -58,14 +61,40 @@ const SwipeDeck: React.FC<SwipeDeckProps> = ({ jobs, userId, onStackEmpty, onErr
       description: job.description,
       location: job.location,
       salary: job.salary !== undefined ? job.salary : 'Not specified', 
+      requirements: job.requirements !== undefined ? job.requirements : 'Not specified',
+      jobType: job.jobType !== undefined ? job.jobType : 'Full-time',
+      postedDate: job.postedDate !== undefined ? job.postedDate : 'Recently',
+      imageUrl: job.imageUrl !== undefined ? job.imageUrl : '',
     };
     setSelectedJob(jobDetails);
     setIsModalOpen(true);
   };
 
+  const handleJobInfo = (job: Job) => {
+    setSelectedJob(job);
+    setIsPanelOpen(true);
+  };
+
   const closeModal = () => {
     setIsModalOpen(false);
     setSelectedJob(null);
+  };
+
+  const handleClosePanel = () => {
+    setIsPanelOpen(false);
+    setSelectedJob(null);
+  };
+
+  const handleLike = () => {
+    handleSwipeAction('right');
+  };
+
+  const handleReject = () => {
+    handleSwipeAction('left');
+  };
+
+  const handleRevert = () => {
+    setCurrentIndex(prev => Math.max(0, prev - 1));
   };
 
   const handlers = useSwipeable({
@@ -123,15 +152,30 @@ const SwipeDeck: React.FC<SwipeDeckProps> = ({ jobs, userId, onStackEmpty, onErr
             stiffness: 150
           }}
         >
-          <JobCard job={currentJob} onSelect={handleJobSelect} />
+          <JobCard job={currentJob} onSelect={handleJobSelect} onInfo={handleJobInfo} />
         </motion.div>
       </AnimatePresence>
       {currentIndex < jobs.length - 1 && (
         <div className="next-card-preview">
-          <JobCard job={jobs[currentIndex + 1]} onLogout={handleLogout} />
+          <JobCard job={jobs[currentIndex + 1]}  onSelect={handleJobSelect} onInfo={handleJobInfo} />
         </div>
       )}
       {isModalOpen && <JobDetailModal job={selectedJob} onClose={closeModal} />}
+      {isPanelOpen && selectedJob && <JobInfoPanel job={selectedJob} onClose={handleClosePanel} />}
+      <div className="floating-icons">
+        <button className="icon revert" onClick={handleRevert}>
+          <FaArrowLeft />
+        </button>
+        <div className="icon reject" onClick={() => handleReject()}>
+          <FaTimes />
+        </div>
+        <div className="icon like" onClick={() => handleLike()}>
+          <FaHeart />
+        </div>
+        <div className="icon info" onClick={() => handleJobInfo(currentJob)}>
+          <FaInfoCircle />
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,17 +1,16 @@
 .job-card {
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  padding: 24px;
-  margin: 16px;
-  max-width: 480px;
-  width: 100%;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 90%; /* Occupies 90% of the screen width */
+  max-width: 800px; /* Optional: Set a max width */
+  margin: 20px auto; /* Center the card */
+  padding: 20px; /* Add some padding */
+  border-radius: 16px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle box-shadow */
+  background-color: white; /* Ensure background is white */
+  transition: box-shadow 0.3s ease; /* Smooth transition for hover effects */
 }
 
 .job-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Slightly increase shadow on hover */
 }
 
 .job-card-header {
