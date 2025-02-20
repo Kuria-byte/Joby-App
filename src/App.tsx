@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Provider } from 'react-redux';
+import store from './store';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Import Routes and Route
 import SwipeDeck from './components/SwipeDeck/SwipeDeck';
 import Home from './pages/Home/Home';
@@ -24,17 +26,19 @@ const App: React.FC = () => {
   };
 
   return (
-    <Router>
-      <div>
-        <Header /> {/* Render Header */}
-        <Routes>
-        {/* <Route path="/" element={<Home />} /> Render Home component on startup */}
-        <Route path="/" element={<SwipeDeck jobs={jobs} userId="dummyUserId" onStackEmpty={handleStackEmpty} />} />
-        <Route path="/user-profile" element={<UserProfile />} /> {/* Ensure this route is defined */}
-      </Routes>
-      </div>
-      <Footer /> {/* Move Footer here to render at the bottom of each page */}
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <div>
+          <Header /> {/* Render Header */}
+          <Routes>
+          {/* <Route path="/" element={<Home />} /> Render Home component on startup */}
+          <Route path="/" element={<SwipeDeck jobs={jobs} userId="dummyUserId" onStackEmpty={handleStackEmpty} />} />
+          <Route path="/user-profile" element={<UserProfile />} /> {/* Ensure this route is defined */}
+        </Routes>
+        </div>
+        <Footer /> {/* Move Footer here to render at the bottom of each page */}
+      </Router>
+    </Provider>
   );
 };
 
